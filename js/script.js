@@ -11,9 +11,6 @@ Posterin arxa fon şəkilini "bg.jpg" ilə dəyişin. Şəkil "img" qovluğunda 
 
 'use strict';
 
-const reklam = document.querySelectorAll('.promo__adv img');
-const janr  = document.querySelector('.promo__genre');
-const bgImage  = document.querySelector('.promo__bg');
 const movieDB = {
     movies: [
         "logan",
@@ -23,24 +20,35 @@ const movieDB = {
         "Avatar 2"
     ]
 };
-movieDB.movies.sort()
+
+const reklam = document.querySelectorAll('.promo__adv img');
+const janr = document.querySelector('.promo__genre');
+const bgimage = document.querySelector('.promo__bg');
 reklam.forEach(item => {
-    item.remove()
+    item.remove();
 });
-janr.textContent = 'drama';
 
-bgImage.style.backgroundImage = 'url(elmual/img/bg.jpg)'
 
-kinolar.innerHTML = '';
+janr.textContent = 'DRAMA';
+
+bgimage.style.backgroundimage = 'url(../img/bg.jpg)'
+
+
+
+
+const kinolar = document.querySelectorAll('.promo__interactive-list');
+
+kinolar.innerHTML ='';
+
 
 movieDB.movies.sort();
 
+kinolar.movieDB.forEach((kino , i) => {
+kinolar.innerHTML  += `
+<ul class="promo__interactive-list">${i+1}. ${kino}
+ <li class="promo__interactive-item">LOGAN
+      <div class="delete"></div>
+    </li>
 
-movieDB.movies.forEach((kino, i) => {
-    kinolar.innerHTML += `
- 
-       
-            <li class="promo__interactive-item">Logan
-                <div class="delete"></div>
-            </li> `
-        })
+`
+});
